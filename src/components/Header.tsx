@@ -16,10 +16,10 @@ export default function Header() {
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 h-20 backdrop-blur-xl bg-black/60 border-b border-white/10 z-40 max-md:top-auto max-md:bottom-0 max-md:h-24" />
+      <div className="fixed top-0 left-0 right-0 h-20 backdrop-blur-xl bg-black/60 z-40 max-md:top-auto max-md:bottom-0 max-md:h-24" />
 
       <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 max-md:top-auto max-md:bottom-4">
-        <nav className="flex items-center gap-6 px-6 py-3 rounded-full backdrop-blur-xl bg-black/80 border border-white/30 shadow-2xl">
+        <nav className="flex items-center gap-6 px-6 py-3 rounded-full backdrop-blur-xl bg-black/80 shadow-2xl">
           <Link
             to="/"
             className={`transition-colors ${

@@ -48,8 +48,10 @@ export default function Home() {
         </div>
       </section>
 
+      <TechStack />
+
       <section className="py-24 px-6">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto flex justify-center">
           <h2 className="text-4xl font-bold text-white mb-4">Featured Project</h2>
           <p className="text-gray-400 mb-12">My latest work</p>
 
@@ -121,8 +123,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <TechStack />
 
       <GitHubGraph />
 
