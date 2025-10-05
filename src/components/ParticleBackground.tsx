@@ -88,7 +88,7 @@ export default function ParticleBackground() {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      updateStars(4);
+      updateStars(3);
       drawStars();
 
       animationFrameRef.current = requestAnimationFrame(animate);

@@ -51,11 +51,11 @@ export default function Home() {
       <TechStack />
 
       <section className="py-24 px-6">
-        <div className="max-w-7xl mx-auto flex justify-center">
-          <h2 className="text-4xl font-bold text-white mb-4">Featured Project</h2>
-          <p className="text-gray-400 mb-12">My latest work</p>
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col items-center">
+            <h2 className="text-4xl font-bold text-white mb-12 text-center">Featured Project</h2>
 
-          <div className="max-w-4xl">
+            <div className="max-w-4xl w-full">
             <div className="group">
               <div className="relative bg-gradient-to-b from-white/5 to-transparent rounded-t-xl p-4 border border-white/10 border-b-0">
                 <div className="flex items-center gap-2 mb-3">
@@ -118,6 +118,7 @@ export default function Home() {
                   Read Case Study
                   <ArrowRight className="w-4 h-4" />
                 </Link>
+              </div>
               </div>
             </div>
           </div>

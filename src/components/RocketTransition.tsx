@@ -1,29 +1,49 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 
 export default function RocketTransition() {
-  const [isAnimating, setIsAnimating] = useState(true);
+  const [isAnimating, setIsAnimating] = useState(false);
   const [rocketPosition, setRocketPosition] = useState(0);
-  const location = useLocation();
+  const [blurAmount, setBlurAmount] = useState(0);
+  const [showBlackCurtain, setShowBlackCurtain] = useState(true);
 
   useEffect(() => {
-    setIsAnimating(true);
-    setRocketPosition(0);
+    const hasSeenAnimation = sessionStorage.getItem('rocketAnimationShown');
 
-    const animationDuration = 1500;
+    if (hasSeenAnimation) {
+      setIsAnimating(false);
+      return;
+    }
+
+    setIsAnimating(true);
+    sessionStorage.setItem('rocketAnimationShown', 'true');
+
+    const totalDuration = 2500;
+    const rocketDuration = 1800;
     const startTime = Date.now();
 
     const animate = () => {
       const elapsed = Date.now() - startTime;
-      const progress = Math.min(elapsed / animationDuration, 1);
+      const progress = Math.min(elapsed / totalDuration, 1);
+      const rocketProgress = Math.min(elapsed / rocketDuration, 1);
 
-      const easeOutCubic = 1 - Math.pow(1 - progress, 3);
-      setRocketPosition(easeOutCubic * 100);
+      const easeOutCubic = 1 - Math.pow(1 - rocketProgress, 3);
+      setRocketPosition(easeOutCubic * 110);
+
+      if (rocketProgress < 1) {
+        const blurProgress = rocketProgress;
+        setBlurAmount(blurProgress * 20);
+        setShowBlackCurtain(true);
+      } else {
+        setShowBlackCurtain(false);
+        const unblurProgress = (elapsed - rocketDuration) / (totalDuration - rocketDuration);
+        setBlurAmount(20 * (1 - Math.min(unblurProgress * 2, 1)));
+      }
 
       if (progress < 1) {
         requestAnimationFrame(animate);
       } else {
-        setTimeout(() => setIsAnimating(false), 100);
+        setIsAnimating(false);
+        setBlurAmount(0);
       }
     };
 
@@ -32,89 +52,95 @@ export default function RocketTransition() {
     }, 100);
 
     return () => clearTimeout(timer);
-  }, [location.pathname]);
+  }, []);
 
   if (!isAnimating) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] pointer-events-none">
+    <>
       <div
-        className="absolute inset-0 bg-black transition-opacity duration-300"
+        className="fixed inset-0 z-[9998] pointer-events-none transition-all duration-300"
         style={{
-          clipPath: `polygon(0 0, 100% 0, 100% ${100 - rocketPosition}%, 0 ${100 - rocketPosition}%)`,
+          backdropFilter: `blur(${blurAmount}px)`,
+          WebkitBackdropFilter: `blur(${blurAmount}px)`,
         }}
       />
 
-      <div
-        className="absolute left-1/2 -translate-x-1/2 transition-all duration-100"
-        style={{
-          bottom: `${rocketPosition}%`,
-          transform: `translateX(-50%) translateY(50%)`,
-        }}
-      >
-        <svg
-          className="w-16 h-16 md:w-24 md:h-24 lg:w-32 lg:h-32"
-          viewBox="0 0 100 100"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+      <div className="fixed inset-0 z-[9999] pointer-events-none">
+        {showBlackCurtain && (
+          <div
+            className="absolute inset-0 bg-black"
+            style={{
+              clipPath: `polygon(0 0, 100% 0, 100% ${100 - rocketPosition}%, 0 ${100 - rocketPosition}%)`,
+            }}
+          />
+        )}
+
+        <div
+          className="absolute left-1/2 -translate-x-1/2 transition-all"
+          style={{
+            bottom: `${rocketPosition}%`,
+            transform: `translateX(-50%) translateY(50%)`,
+            opacity: rocketPosition > 105 ? 0 : 1,
+          }}
         >
-          <g>
-            <path
-              d="M50 5 L60 30 L75 35 L60 40 L55 55 L50 40 L45 55 L40 40 L25 35 L40 30 Z"
-              fill="white"
-              stroke="white"
-              strokeWidth="1"
-            />
+          <svg
+            className="w-20 h-20 md:w-28 md:h-28 lg:w-36 lg:h-36"
+            viewBox="0 0 100 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="rocketGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style={{ stopColor: '#ffffff', stopOpacity: 1 }} />
+                <stop offset="100%" style={{ stopColor: '#e0e0e0', stopOpacity: 1 }} />
+              </linearGradient>
+              <filter id="shadow">
+                <feDropShadow dx="0" dy="2" stdDeviation="2" floodOpacity="0.3" />
+              </filter>
+            </defs>
 
-            <ellipse cx="50" cy="45" rx="15" ry="20" fill="white" opacity="0.9" />
-
-            <circle cx="50" cy="40" r="6" fill="black" />
-
-            <rect x="35" y="60" width="10" height="15" fill="white" opacity="0.9" />
-            <rect x="55" y="60" width="10" height="15" fill="white" opacity="0.9" />
-
-            <path
-              d="M30 75 L35 95 L40 75 Z"
-              fill="white"
-              opacity="0.7"
-            />
-            <path
-              d="M70 75 L65 95 L60 75 Z"
-              fill="white"
-              opacity="0.7"
-            />
-            <path
-              d="M45 75 L40 95 L50 90 L60 95 L55 75 Z"
-              fill="white"
-              opacity="0.8"
-            />
-
-            <g opacity={rocketPosition > 10 ? "0.6" : "0"}>
+            <g filter="url(#shadow)">
               <path
-                d="M45 95 Q50 105 55 95"
-                stroke="#ff6b6b"
-                strokeWidth="2"
-                fill="none"
+                d="M50 5 L60 30 L75 35 L60 40 L55 55 L50 40 L45 55 L40 40 L25 35 L40 30 Z"
+                fill="url(#rocketGradient)"
+                stroke="#cccccc"
+                strokeWidth="1"
               />
-              <path
-                d="M35 95 Q37 100 40 95"
-                stroke="#ffd93d"
-                strokeWidth="2"
-                fill="none"
-              />
-              <path
-                d="M60 95 Q63 100 65 95"
-                stroke="#ffd93d"
-                strokeWidth="2"
-                fill="none"
-              />
+
+              <ellipse cx="50" cy="45" rx="15" ry="22" fill="url(#rocketGradient)" />
+
+              <circle cx="50" cy="38" r="7" fill="#1a1a1a" stroke="#666" strokeWidth="1" />
+
+              <rect x="33" y="62" width="11" height="16" rx="2" fill="url(#rocketGradient)" stroke="#cccccc" strokeWidth="0.5" />
+              <rect x="56" y="62" width="11" height="16" rx="2" fill="url(#rocketGradient)" stroke="#cccccc" strokeWidth="0.5" />
+
+              <path d="M28 78 L33 98 L38 78 Z" fill="#d0d0d0" stroke="#999" strokeWidth="0.5" />
+              <path d="M72 78 L67 98 L62 78 Z" fill="#d0d0d0" stroke="#999" strokeWidth="0.5" />
+              <path d="M43 78 L38 98 L50 92 L62 98 L57 78 Z" fill="#e0e0e0" stroke="#aaa" strokeWidth="0.5" />
+
+              <g opacity={rocketPosition > 5 ? "0.8" : "0"}>
+                <ellipse cx="50" cy="100" rx="8" ry="4" fill="#ff6b6b" opacity="0.6">
+                  <animate attributeName="ry" values="4;6;4" dur="0.3s" repeatCount="indefinite" />
+                </ellipse>
+                <ellipse cx="50" cy="102" rx="6" ry="3" fill="#ffd93d" opacity="0.7">
+                  <animate attributeName="ry" values="3;5;3" dur="0.25s" repeatCount="indefinite" />
+                </ellipse>
+                <ellipse cx="38" cy="98" rx="4" ry="2" fill="#ffd93d" opacity="0.5">
+                  <animate attributeName="ry" values="2;3;2" dur="0.2s" repeatCount="indefinite" />
+                </ellipse>
+                <ellipse cx="62" cy="98" rx="4" ry="2" fill="#ffd93d" opacity="0.5">
+                  <animate attributeName="ry" values="2;3;2" dur="0.2s" repeatCount="indefinite" />
+                </ellipse>
+              </g>
+
+              <circle cx="50" cy="35" r="2" fill="#666" opacity="0.4" />
+              <circle cx="50" cy="43" r="1.5" fill="#666" opacity="0.4" />
+              <rect x="48" y="50" width="4" height="8" rx="1" fill="#999" opacity="0.3" />
             </g>
-
-            <circle cx="50" cy="35" r="3" fill="gray" opacity="0.5" />
-            <circle cx="50" cy="45" r="2" fill="gray" opacity="0.5" />
-          </g>
-        </svg>
+          </svg>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

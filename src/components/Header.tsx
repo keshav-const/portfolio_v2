@@ -16,10 +16,17 @@ export default function Header() {
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 h-20 backdrop-blur-xl bg-black/60 z-40 max-md:top-auto max-md:bottom-0 max-md:h-24" />
+      <div
+        className="fixed top-0 left-0 right-0 h-20 z-40 max-md:top-auto max-md:bottom-0 max-md:h-24"
+        style={{
+          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, transparent 100%)',
+          backdropFilter: 'blur(20px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+        }}
+      />
 
       <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 max-md:top-auto max-md:bottom-4">
-        <nav className="flex items-center gap-6 px-6 py-3 rounded-full backdrop-blur-xl bg-black/80 shadow-2xl">
+        <nav className="flex items-center gap-3 sm:gap-4 md:gap-6 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 rounded-full backdrop-blur-xl bg-black/80 border border-white/20 shadow-2xl">
           <Link
             to="/"
             className={`transition-colors ${
@@ -27,7 +34,7 @@ export default function Header() {
             }`}
             aria-label="Home"
           >
-            <Home className="w-5 h-5" />
+            <Home className="w-4 h-4 sm:w-5 sm:h-5" />
           </Link>
 
           {navLinks.map((link) => {
@@ -36,12 +43,12 @@ export default function Header() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`flex items-center gap-2 text-sm font-medium transition-colors ${
+                className={`flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium transition-colors ${
                   isActive(link.path) ? 'text-white' : 'text-gray-400 hover:text-white'
                 }`}
               >
-                <Icon className="w-4 h-4" />
-                {link.name}
+                <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                <span className="hidden sm:inline">{link.name}</span>
               </Link>
             );
           })}
@@ -50,10 +57,10 @@ export default function Header() {
             href="https://drive.google.com/file/d/placeholder"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-1.5 bg-white text-black rounded-full text-sm font-medium hover:bg-gray-200 transition-colors"
+            className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 bg-white text-black rounded-full text-xs sm:text-sm font-medium hover:bg-gray-200 transition-colors"
           >
-            <Download className="w-4 h-4" />
-            Resume
+            <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <span className="hidden sm:inline">Resume</span>
           </a>
         </nav>
       </header>
