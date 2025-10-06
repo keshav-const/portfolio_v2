@@ -17,13 +17,25 @@ export default function Header() {
   return (
     <>
       <div
-        className="fixed top-0 left-0 right-0 h-20 z-40 max-md:top-auto max-md:bottom-0 max-md:h-24"
+        className="fixed top-0 left-0 right-0 h-24 sm:h-20 md:h-20 z-40 max-md:top-auto max-md:bottom-0"
         style={{
-          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, transparent 100%)',
-          backdropFilter: 'blur(20px) saturate(180%)',
-          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%)',
+          maskImage: 'linear-gradient(to bottom, black 0%, black 40%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 40%, transparent 100%)',
+          backdropFilter: 'blur(0px)',
+          WebkitBackdropFilter: 'blur(0px)',
         }}
-      />
+      >
+        <div
+          className="absolute inset-0"
+          style={{
+            backdropFilter: 'blur(20px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+            maskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)',
+          }}
+        />
+      </div>
 
       <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 max-md:top-auto max-md:bottom-4">
         <nav className="flex items-center gap-3 sm:gap-4 md:gap-6 px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 rounded-full backdrop-blur-xl bg-black/80 border border-white/20 shadow-2xl">

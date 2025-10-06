@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export default function RocketTransition() {
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(true);
   const [rocketPosition, setRocketPosition] = useState(0);
   const [blurAmount, setBlurAmount] = useState(0);
   const [showBlackCurtain, setShowBlackCurtain] = useState(true);
@@ -14,32 +14,32 @@ export default function RocketTransition() {
       return;
     }
 
-    setIsAnimating(true);
     sessionStorage.setItem('rocketAnimationShown', 'true');
 
     const totalDuration = 2500;
     const rocketDuration = 1800;
+    const blurFadeDuration = 700;
     const startTime = Date.now();
 
     const animate = () => {
       const elapsed = Date.now() - startTime;
-      const progress = Math.min(elapsed / totalDuration, 1);
       const rocketProgress = Math.min(elapsed / rocketDuration, 1);
 
       const easeOutCubic = 1 - Math.pow(1 - rocketProgress, 3);
       setRocketPosition(easeOutCubic * 110);
 
       if (rocketProgress < 1) {
-        const blurProgress = rocketProgress;
-        setBlurAmount(blurProgress * 20);
+        setBlurAmount(rocketProgress * 20);
         setShowBlackCurtain(true);
       } else {
         setShowBlackCurtain(false);
-        const unblurProgress = (elapsed - rocketDuration) / (totalDuration - rocketDuration);
-        setBlurAmount(20 * (1 - Math.min(unblurProgress * 2, 1)));
+
+        const blurFadeProgress = Math.min((elapsed - rocketDuration) / blurFadeDuration, 1);
+        const easeOutBlur = 1 - Math.pow(1 - blurFadeProgress, 2);
+        setBlurAmount(20 * (1 - easeOutBlur));
       }
 
-      if (progress < 1) {
+      if (elapsed < totalDuration) {
         requestAnimationFrame(animate);
       } else {
         setIsAnimating(false);
@@ -47,11 +47,11 @@ export default function RocketTransition() {
       }
     };
 
-    const timer = setTimeout(() => {
-      requestAnimationFrame(animate);
-    }, 100);
+    requestAnimationFrame(animate);
 
-    return () => clearTimeout(timer);
+    return () => {
+      setIsAnimating(false);
+    };
   }, []);
 
   if (!isAnimating) return null;
@@ -59,10 +59,11 @@ export default function RocketTransition() {
   return (
     <>
       <div
-        className="fixed inset-0 z-[9998] pointer-events-none transition-all duration-300"
+        className="fixed inset-0 z-[9998] pointer-events-none"
         style={{
           backdropFilter: `blur(${blurAmount}px)`,
           WebkitBackdropFilter: `blur(${blurAmount}px)`,
+          transition: showBlackCurtain ? 'none' : 'backdrop-filter 0.3s ease-out',
         }}
       />
 
@@ -72,16 +73,18 @@ export default function RocketTransition() {
             className="absolute inset-0 bg-black"
             style={{
               clipPath: `polygon(0 0, 100% 0, 100% ${100 - rocketPosition}%, 0 ${100 - rocketPosition}%)`,
+              transition: 'none',
             }}
           />
         )}
 
         <div
-          className="absolute left-1/2 -translate-x-1/2 transition-all"
+          className="absolute left-1/2"
           style={{
             bottom: `${rocketPosition}%`,
-            transform: `translateX(-50%) translateY(50%)`,
+            transform: 'translateX(-50%) translateY(50%)',
             opacity: rocketPosition > 105 ? 0 : 1,
+            transition: 'opacity 0.2s ease-out',
           }}
         >
           <svg
