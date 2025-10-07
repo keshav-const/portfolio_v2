@@ -1,12 +1,12 @@
 export default function TechStack() {
   const row1Tech = [
     'TypeScript', 'JavaScript', 'C++', 'React', 'Next.js',
-    'Node.js', 'Express.js', 'Hono', 'PostgreSQL'
+    'Node.js', 'Express.js', 'PostgreSQL'
   ];
 
   const row2Tech = [
     'Prisma', 'MongoDB', 'Tailwind CSS', 'Cloudflare',
-    'Git', 'GitHub', 'Bash', 'Linux'
+    'Git', 'GitHub','Docker','AWS'
   ];
 
   return (

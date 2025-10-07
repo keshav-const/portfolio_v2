@@ -65,7 +65,7 @@ export default function About() {
                 Download Resume
               </button>
               <a
-                href="https://calendly.com/placeholder"
+                href="https://calendly.com/keshavladdha005"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-8 py-4 border border-white text-white rounded-lg font-medium hover:bg-white/10 transition-colors"
@@ -75,7 +75,7 @@ export default function About() {
               </a>
             </div>
 
-            <div className="grid grid-cols-2 gap-6 pt-6">
+            {/* <div className="grid grid-cols-2 gap-6 pt-6">
               <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
                 <div className="text-4xl font-bold text-white mb-2">50+</div>
                 <div className="text-gray-400">Projects Completed</div>
@@ -92,7 +92,22 @@ export default function About() {
                 <div className="text-4xl font-bold text-white mb-2">100%</div>
                 <div className="text-gray-400">Client Satisfaction</div>
               </div>
+            </div> */}
+                <div className="pt-6">
+              <div className="flex flex-col gap-6">
+            {/* Box for "Projects Completed" */}
+            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+              <div className="text-4xl font-bold text-white mb-2">10+</div>
+              <div className="text-gray-400">Projects Completed</div>
             </div>
+
+            {/* Box for "Open Source Contribution" */}
+            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+              <div className="text-4xl font-bold text-white mb-2">3+</div>
+              <div className="text-gray-400">Open Source Contributions</div>
+            </div>
+          </div>
+        </div>
           </div>
         </div>
       </div>

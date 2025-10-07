@@ -66,7 +66,7 @@ export default function Header() {
           })}
 
           <a
-            href="https://drive.google.com/file/d/placeholder"
+            href="https://drive.google.com/file/d/1_nde-tcDE_0asEUkdUeXVcQQJB_LsQ0l/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 bg-white text-black rounded-full text-xs sm:text-sm font-medium hover:bg-gray-200 transition-colors"
