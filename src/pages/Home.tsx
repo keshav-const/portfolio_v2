@@ -3,19 +3,20 @@ import { ArrowRight, ExternalLink, Github } from 'lucide-react';
 import TextRotator from '../components/TextRotator';
 import TechStack from '../components/TechStack';
 import GitHubGraph from '../components/GitHubGraph';
+import collabImage from '../assests/images/Codecollab-demo.png';
 
 export default function Home() {
   const rotatingTexts = ['Full Stack Developer', 'Competitive Programmer', 'Exploring Web3 & Crypto'];
 
   const featuredProject = {
     id: 1,
-    slug: 'ecommerce-platform',
-    title: 'E-Commerce Platform',
-    description: 'A comprehensive e-commerce solution with real-time inventory management, secure payment processing, and an intuitive admin dashboard.',
-    image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=800',
-    tags: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redis'],
-    github: 'https://github.com',
-    live: 'https://example.com',
+    slug: 'Code-Collab',
+    title: 'Code-Collabrator Platform',
+    description: 'A real-time collaborative code editor where teams can write, edit, and debug code together. Perfect for pair programming, code reviews, and remote collaboration.',
+    image: collabImage,
+    tags: ['React', 'Node.js', 'Supabase', 'Typscript', 'Tailwind CSS','WebRTC','Framer Motion','Monaco Editor'],
+    github: 'https://github.com/keshav-const/inkwell-code',
+    live: 'https://code-collab-gold.vercel.app/',
   };
 
   return (

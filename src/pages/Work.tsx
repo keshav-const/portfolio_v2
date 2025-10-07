@@ -1,46 +1,49 @@
 import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
+import collabImage from '../assests/images/Codecollab-demo.png'
+import portfoliodemo from '../assests/images/Portfolio-demo.png'
+import photogramdemo from '../assests/images/Photogram-demo.png'
 export default function Work() {
   const projects = [
     {
       id: 1,
-      slug: 'ecommerce-platform',
-      title: 'E-Commerce Platform',
-      description: 'A comprehensive e-commerce solution with real-time inventory management, secure payment processing, and an intuitive admin dashboard.',
-      image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tags: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redis'],
-      github: 'https://github.com',
-      live: 'https://example.com',
+    slug: 'Code-Collab',
+    title: 'Code-Collabrator Platform',
+    description: 'A real-time collaborative code editor where teams can write, edit, and debug code together. Perfect for pair programming, code reviews, and remote collaboration.',
+    image: collabImage,
+    tags: ['React', 'Node.js', 'Supabase', 'Typscript', 'Tailwind CSS','WebRTC','Framer Motion','Monaco Editor'],
+    github: 'https://github.com/keshav-const/inkwell-code',
+    live: 'https://code-collab-gold.vercel.app/',
+    },
+     {
+      id: 3,
+      slug: 'Photogram',
+      title: 'Photogram',
+      description: 'Instagram-style social platform built with the MERN stack. It allows users to share photos, follow other creators, and engage with content through likes and comments.',
+      image: photogramdemo,
+      tags: ['React', 'Node.js', 'Express', 'MongoDB','Typescript'],
+      github: 'https://github.com/keshav-const/Photogram',
+      live: 'https://photogram-frontend-pnd9.vercel.app',
     },
     {
       id: 2,
-      slug: 'ai-content-generator',
-      title: 'AI Content Generator',
-      description: 'Machine learning powered platform for generating high-quality content using advanced NLP models and custom training pipelines.',
-      image: 'https://images.pexels.com/photos/8438918/pexels-photo-8438918.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tags: ['Python', 'TensorFlow', 'React', 'FastAPI', 'Docker'],
-      github: 'https://github.com',
-      live: 'https://example.com',
+      slug: 'Portfolio-generator',
+      title: 'Portfolio-Generator',
+      description: 'Web app that creates a personalized portfolio website based on user-inputted details and templates. It streamlines the process of building and customizing a professional online presence.',
+      image: portfoliodemo,
+      tags: ['Reactjs', 'Tailwind CSS', 'Nodejs', 'Expressjs', 'Framer Motion'],
+      github: 'https://github.com/keshav-const/Portfolio_generator_1',
+      live: 'https://portfolio-generator-1.vercel.app/',
     },
-    {
-      id: 3,
-      slug: 'social-media-dashboard',
-      title: 'Social Media Dashboard',
-      description: 'Unified analytics dashboard for managing multiple social media accounts with real-time metrics and automated reporting.',
-      image: 'https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tags: ['Vue.js', 'D3.js', 'Express', 'PostgreSQL'],
-      github: 'https://github.com',
-      live: 'https://example.com',
-    },
+   
     {
       id: 4,
-      slug: 'task-management-system',
-      title: 'Task Management System',
-      description: 'Collaborative task management tool with real-time updates, team collaboration features, and advanced project tracking.',
+      slug: 'skill swap',
+      title: 'Skill swap-P2P Skill Exchange Platform',
+      description: 'A  full-stack, community-driven application where users can offer their skills and connect with others to facilitate a peer-to-peer knowledge exchange.',
       image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800',
-      tags: ['Next.js', 'TypeScript', 'Prisma', 'Supabase'],
-      github: 'https://github.com',
+      tags: ['React','Tailwind CSS','Node.js','Express', 'TypeScript', 'PostgreSql'],
+      github: 'https://github.com/keshav-const/SkillSwap',
       live: 'https://example.com',
     },
   ];

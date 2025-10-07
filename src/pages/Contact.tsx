@@ -48,13 +48,13 @@ export default function Contact() {
               <h2 className="text-2xl font-bold text-white mb-6">Get in Touch</h2>
               <div className="space-y-4">
                 <a
-                  href="mailto:your.email@example.com"
+                  href="keshavladdah005@gmail.com"
                   className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors group"
                 >
                   <div className="p-3 bg-white/5 rounded-lg border border-white/10 group-hover:border-white/50 transition-colors">
                     <Mail className="w-5 h-5" />
                   </div>
-                  <span>your.email@example.com</span>
+                  <span>keshavladdha005@gmail.com</span>
                 </a>
               </div>
             </div>
@@ -63,7 +63,7 @@ export default function Contact() {
               <h2 className="text-2xl font-bold text-white mb-6">Connect with Me</h2>
               <div className="flex gap-4">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/keshav-const"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-white/50 hover:bg-white/10 transition-all text-gray-300 hover:text-white"
@@ -71,7 +71,7 @@ export default function Contact() {
                   <Github className="w-6 h-6" />
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/keshav-laddha-523473322"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-white/50 hover:bg-white/10 transition-all text-gray-300 hover:text-white"
@@ -79,7 +79,7 @@ export default function Contact() {
                   <Linkedin className="w-6 h-6" />
                 </a>
                 <a
-                  href="https://twitter.com"
+                  href="https://x.com/constellator07"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-white/50 hover:bg-white/10 transition-all text-gray-300 hover:text-white"
