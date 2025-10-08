@@ -9,7 +9,7 @@ export default function Work() {
     {
       id: 1,
     slug: 'Code-Collab',
-    title: 'Code-Collabrator Platform',
+    title: 'Code-Collabs',
     description: 'A real-time collaborative code editor where teams can write, edit, and debug code together. Perfect for pair programming, code reviews, and remote collaboration.',
     image: collabImage,
     tags: ['React', 'Node.js', 'Supabase', 'Typscript', 'Tailwind CSS','WebRTC','Framer Motion','Monaco Editor'],
@@ -39,7 +39,7 @@ export default function Work() {
    
     {
       id: 4,
-      slug: 'skill swap',
+      slug: 'SkillSwap',
       title: 'Skill Swap-P2P Skill Exchange Platform',
       description: 'A  full-stack, community-driven application where users can offer their skills and connect with others to facilitate a peer-to-peer knowledge exchange.',
       image: SkillSwapdemo,
