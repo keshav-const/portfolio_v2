@@ -1,5 +1,5 @@
 import { Download, Calendar } from 'lucide-react';
-
+import PP from '../assests/images/Portfolioprofile.jpg'
 export default function About() {
   return (
     <div className="min-h-screen py-32 px-6">
@@ -11,7 +11,7 @@ export default function About() {
             <div className="relative w-80 h-80">
               <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-300 rounded-full blur-2xl opacity-10 animate-pulse" />
               <img
-                src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src={PP}
                 alt="Profile"
                 className="relative w-full h-full object-cover rounded-full border-4 border-white/30"
               />
@@ -23,21 +23,21 @@ export default function About() {
               <h2 className="text-3xl font-bold text-white mb-4">My Story</h2>
               <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
-                  I'm a passionate full-stack developer with over 5 years of experience
-                  building modern web applications. My journey in tech began with a curiosity
-                  about how things work, which quickly evolved into a deep love for creating
-                  digital solutions that make a real impact.
+                  I'm a passionate full-stack developer building modern web applications. 
+                  My journey in tech started with a desire to understand how things work,
+                  and it quickly grew into a love for creating digital solutions that 
+                  are both functional and elegant.
                 </p>
                 <p>
-                  Throughout my career, I've had the privilege of working with startups and
-                  established companies, helping them bring their visions to life through
-                  elegant code and thoughtful design. I specialize in React, Node.js, and
-                  modern web technologies, always staying current with the latest industry trends.
+                  In my short but immersive experience, I’ve worked on projects
+                  ranging from interactive web apps to collaborative coding tools, 
+                  constantly exploring technologies like React, Node.js, and modern web stacks. 
+                  I enjoy learning by building, experimenting, and solving real-world problems through code.
                 </p>
                 <p>
-                  When I'm not coding, you'll find me exploring Web3 technologies, contributing
-                  to open-source projects, or sharing my knowledge through technical writing
-                  and mentoring aspiring developers.
+                  When I’m not coding, I love exploring new technologies, contributing to open-source projects,
+                  and finding creative ways to improve user experiences. I’m driven by curiosity and the joy of creating,
+                  always aiming to grow and make an impact through technology.
                 </p>
               </div>
             </div>
@@ -60,10 +60,14 @@ export default function About() {
             </div>
 
             <div className="pt-6 flex gap-4">
-              <button className="flex items-center gap-2 px-8 py-4 bg-white text-black rounded-lg font-medium hover:bg-gray-200 transition-colors">
+              <a
+              href="https://drive.google.com/file/d/1_nde-tcDE_0asEUkdUeXVcQQJB_LsQ0l/view?usp=sharing" // IMPORTANT: Replace this with the actual path to your resume file
+              download="Keshav_Resume.pdf" // This is the filename the user will see
+              className="flex items-center gap-2 px-8 py-4 bg-white text-black rounded-lg font-medium hover:bg-gray-200 transition-colors"
+              >
                 <Download className="w-5 h-5" />
                 Download Resume
-              </button>
+              </a>
               <a
                 href="https://calendly.com/keshavladdha005"
                 target="_blank"
