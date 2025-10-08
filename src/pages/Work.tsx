@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import collabImage from '../assests/images/Codecollab-demo.png'
 import portfoliodemo from '../assests/images/Portfolio-demo.png'
 import photogramdemo from '../assests/images/Photogram-demo.png'
+import SkillSwapdemo from '../assests/images/SkillSwap-demo.png'
 export default function Work() {
   const projects = [
     {
@@ -39,12 +40,12 @@ export default function Work() {
     {
       id: 4,
       slug: 'skill swap',
-      title: 'Skill swap-P2P Skill Exchange Platform',
+      title: 'Skill Swap-P2P Skill Exchange Platform',
       description: 'A  full-stack, community-driven application where users can offer their skills and connect with others to facilitate a peer-to-peer knowledge exchange.',
-      image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: SkillSwapdemo,
       tags: ['React','Tailwind CSS','Node.js','Express', 'TypeScript', 'PostgreSql'],
       github: 'https://github.com/keshav-const/SkillSwap',
-      live: 'https://example.com',
+      live:'https://github.com/keshav-const/SkillSwap'
     },
   ];
 
