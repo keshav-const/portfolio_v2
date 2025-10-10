@@ -61,8 +61,8 @@ export default function About() {
 
             <div className="pt-6 flex gap-4">
               <a
-              href="https://drive.google.com/file/d/1_nde-tcDE_0asEUkdUeXVcQQJB_LsQ0l/view?usp=sharing" // IMPORTANT: Replace this with the actual path to your resume file
-              download="Keshav_Resume.pdf" // This is the filename the user will see
+              href="https://drive.google.com/file/d/1fZwpd6UIVzUndB6IWTRoZOagOkjREkTx/view?usp=drive_link"
+              download="Keshav_Resume.pdf" 
               className="flex items-center gap-2 px-8 py-4 bg-white text-black rounded-lg font-medium hover:bg-gray-200 transition-colors"
               >
                 <Download className="w-5 h-5" />
