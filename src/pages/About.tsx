@@ -61,7 +61,7 @@ export default function About() {
 
             <div className="pt-6 flex gap-4">
               <a
-              href="https://drive.google.com/file/d/1WtHyiQFY9ci61MzmUZ2vTQfvZs13kjbt/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1wQfUCEg29_OuabomgEDc13tQBcPLXyio/view?usp=sharing"
               download="Keshav_Resume.pdf" 
               className="flex items-center gap-2 px-8 py-4 bg-white text-black rounded-lg font-medium hover:bg-gray-200 transition-colors"
               >
